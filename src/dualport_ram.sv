@@ -1,11 +1,5 @@
-//============================================================
-// 1-to-2 Stream Conversion using Dual-Port RAM (4-Always FSM)
-//============================================================
-// - Accepts 64-bit AXI-Stream input
-// - Stores data into Dual-Port RAM
-// - Splits into two 32-bit outputs
-// - FSM-controlled read bursts (TOTAL_SAMPLES) and idle gaps (IDLE_CYCLES)
-//============================================================
+
+// 1-to-2 Stream Conversion using Dual-Port RAM 
 
 `timescale 1ps/1ps
 
@@ -56,7 +50,7 @@ module stream_splitter_dp_ram #(
     logic ram_en, wr_en;
 
     //========================================================
-    // 3. SEQ #1 — State Register
+    // 3. SEQ #1 â€” State Register
     //========================================================
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n)
@@ -66,7 +60,7 @@ module stream_splitter_dp_ram #(
     end
 
     //========================================================
-    // 4. COMB #1 — Next-State Logic
+    // 4. COMB #1 â€” Next-State Logic
     //========================================================
     always_comb begin
         next_state = current_state;
@@ -78,7 +72,7 @@ module stream_splitter_dp_ram #(
     end
 
     //========================================================
-    // 5. SEQ #2 — Counters, RAM Access, Pointers
+    // 5. SEQ #2 â€” Counters, RAM Access, Pointers
     //========================================================
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -118,7 +112,7 @@ module stream_splitter_dp_ram #(
     end
 
     //========================================================
-    // 6. COMB #2 — Output / Handshake Logic
+    // 6. COMB #2 â€” Output / Handshake Logic
     //========================================================
     always_comb begin
         // Defaults
@@ -152,3 +146,4 @@ module stream_splitter_dp_ram #(
     end
 
 endmodule
+
