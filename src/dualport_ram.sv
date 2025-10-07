@@ -6,7 +6,7 @@
 module stream_splitter_dp_ram #(
     parameter int TOTAL_SAMPLES = 3276,     // number of valid samples
     parameter int IDLE_CYCLES   = 1172,     // number of idle cycles
-    parameter int MEM_DEPTH     = 3276*4    // total depth
+    parameter int MEM_DEPTH     = 3276    // total depth
 )(
     input  logic        clk,
     input  logic        rst_n,
@@ -146,4 +146,5 @@ module stream_splitter_dp_ram #(
     end
 
 endmodule
+
 
